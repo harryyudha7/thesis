@@ -1,0 +1,21 @@
+mhd equilibria:
+- Frances Bauer, Octavio Betancourt, Paul Garabedian (Auth.) - A Computational Method in Plasma Physics. Springer-Verlag Berlin Heidelberg (1978)
+- Axisymmetric Ideal MHD Tokamak Equilibria
+- Computation of MHD Equilibrium of Tokamak Plasma
+- Computing Ideal Magnetohydrodynamic Equilibria
+- Steepest-Descent Moment Method for 3D MHD Equilibria
+
+past thesis:
+- Equilibrium and Initial Value Problem Simulation Studies of Nonlinear MHD in Stellarator
+- Free-Boundary Simulations of MHD Plasma Instabilities in Tokamaks
+- Non-linear Magnetohydrodynamic Simulations of Edge Localised Modes
+
+solve gs eq:
+- Include Nondimensionalizing
+- A Review on the Solution of Grad-Shafranov Equation in the Cylindrical Coordinates Based on the Chebyshev Collocation Technique
+- Analytical Solution of the Grad-Shafranov Equation in an Elliptical Prolate Geometry
+- Analytical Solutions to the Grad-Shafranov Equation for Tokamak Equilibrium with Dissimilar Source Functions
+- Fixed Boundary Grad-Shafranov Solver Using Finite Difference Method in Nonhomogeneous Meshgrid
+- Solving the Grad-Shafranov Equation with Spectral Elements (2014)
+- Solving the Grad-Shafranov Equation Using Spectral Elements for Tokamak Equilibrium with Toroidal Rotation
+- Stephen Jardin - Computational Methods in Plasma Physics (Chapman & Hall CRC Computational Science) CRC Press (2010)

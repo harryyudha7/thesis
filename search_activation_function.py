@@ -11,9 +11,9 @@ from pinn import make_forward_fn
 
 
 R = 1.0  # rate of maximum population growth parameterizing the equation
-X_BOUNDARY = [0.0, 1.0]  # boundary condition coordinate
+X_BOUNDARY = [0.0, np.pi/2]  # boundary condition coordinate
 F_BOUNDARY = [0.0, 1.0]  # boundary condition value
-eps = 0.1
+eps = 0.01
 
 def make_loss_fn(f: Callable, dfdx: Callable, d2fdx2: Callable) -> Callable:
     """Make a function loss evaluation function
@@ -41,8 +41,8 @@ def make_loss_fn(f: Callable, dfdx: Callable, d2fdx2: Callable) -> Callable:
         f_value = f(x, params)
         # interior = dfdx(x, params) - R * f_value * (1 - f_value)
         # interior = eps*d2fdx2(x,params) + 2*dfdx(x,params) + 2*f_value
-        # interior = d2fdx2(x,params) + f_value + eps*f_value**3
-        interior = d2fdx2(x,params) + (np.pi/2)**2*f_value + eps*(np.pi/2)**2*9*f_value
+        interior = d2fdx2(x,params) + f_value + eps*f_value**3
+        # interior = d2fdx2(x,params) + (np.pi/2)**2*f_value + eps*(np.pi/2)**2*9*f_value
         # boundary loss
         x0 = X_BOUNDARY
         f0 = F_BOUNDARY
@@ -86,10 +86,12 @@ if __name__ == "__main__":
     domain = (0.0, np.pi/2)
 
     act_func = [
-                # nn.ReLU(), nn.Tanh(), nn.Sigmoid(), nn.SiLU(), 
+                nn.ReLU(), 
+                nn.Tanh(), 
+                nn.Sigmoid(), nn.SiLU(), 
                 nn.Mish(), 
-                # nn.ELU(), nn.CELU(), nn.SELU(), nn.GELU(),
-                # nn.LeakyReLU(), nn.Softplus(), nn.Softmin(), nn.Softmax()
+                nn.ELU(), nn.CELU(), nn.SELU(), nn.GELU(),
+                nn.LeakyReLU(), nn.Softplus(), nn.Softmin(), nn.Softmax()
                 ]
     min_loss = np.inf
     model = None

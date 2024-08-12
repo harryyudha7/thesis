@@ -11,8 +11,8 @@ from pinn import make_forward_fn
 
 
 R = 1.0  # rate of maximum population growth parameterizing the equation
-X_BOUNDARY = [0.0, 1.0]  # boundary condition coordinate
-F_BOUNDARY = [0.0, 1.0]  # boundary condition value
+X_BOUNDARY = [0.0, np.pi/2]  # boundary condition coordinate
+F_BOUNDARY = [0.0, 2.0]  # boundary condition value
 eps = 0.1
 
 def make_loss_fn(f: Callable, dfdx: Callable, d2fdx2: Callable) -> Callable:
@@ -47,11 +47,11 @@ def make_loss_fn(f: Callable, dfdx: Callable, d2fdx2: Callable) -> Callable:
         f0 = F_BOUNDARY
         x_boundary = torch.tensor([x0[0], x0[1]])
         f_boundary = torch.tensor([f0[0], f0[1]])
-        boundary = f(x_boundary, params) - f_boundary
+        boundary = f(x_boundary, params)
 
         loss = nn.MSELoss()
         loss_value = loss(interior, torch.zeros_like(interior)) + loss(
-            boundary, torch.zeros_like(boundary)
+            boundary, f_boundary
         )
 
         return loss_value
@@ -82,13 +82,14 @@ if __name__ == "__main__":
     num_iter = args.num_epochs
     tolerance = 1e-8
     learning_rate = args.learning_rate
-    domain = (0.0, 1.0)
+    domain = (0.0, X_BOUNDARY[1])
 
     act_func = [
-                nn.ReLU(), nn.Tanh(), nn.Sigmoid(), nn.SiLU(), 
-                # nn.Mish(), 
+                nn.ReLU(), nn.Tanh(), 
+                nn.Sigmoid(), nn.SiLU(), 
+                nn.Mish(), 
                 nn.ELU(), nn.CELU(), nn.SELU(), nn.GELU(),
-                nn.LeakyReLU(), nn.Softplus(), nn.Softmin(), nn.Softmax()
+                # nn.LeakyReLU(), nn.Softplus(), nn.Softmin(), nn.Softmax()
                 ]
     min_loss = np.inf
     model = None
@@ -144,6 +145,7 @@ if __name__ == "__main__":
     # analytical_sol_fn = lambda x: F_BOUNDARY[1]*np.sin(x) + eps*(F_BOUNDARY[1]**3*(-1/32*np.sin(x) - 1/32*np.sin(3*x) + 3/8*x*np.cos(x)))
     
     x_eval_np = x_eval.detach().numpy()
+    # x_eval_np = x_eval.detach()
     x_sample_np = torch.FloatTensor(batch_size).uniform_(domain[0], domain[1]).detach().numpy()
 
     fig, ax = plt.subplots()
