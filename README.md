@@ -6,9 +6,9 @@ My thesis can be accessed [here](https://drive.google.com/file/d/1VPo87p9ThL6-uU
 
 The repository is organized into several folders, each containing relevant documents, scripts, and resources utilized throughout the research.
 
-## References
+# References
 
-### 1. MHD Equilibria
+## 1. MHD Equilibria
 This section includes key references and literature on the computation and theoretical understanding of Magnetohydrodynamic (MHD) equilibria, particularly in tokamak configurations. It covers foundational texts, computational methods, and studies on ideal MHD equilibria.
 
 - Frances Bauer, Octavio Betancourt, Paul Garabedian (Auth.) - A Computational Method in Plasma Physics. Springer-Verlag Berlin Heidelberg (1978)
@@ -17,14 +17,14 @@ This section includes key references and literature on the computation and theor
 - Computing Ideal Magnetohydrodynamic Equilibria
 - Steepest-Descent Moment Method for 3D MHD Equilibria
 
-### 2. Past Thesis
+## 2. Past Thesis
 This section contains previous thesis works that are relevant to the current research. These theses focus on nonlinear MHD simulations, plasma instabilities, and other related areas in stellarators and tokamaks.
 
 - Equilibrium and Initial Value Problem Simulation Studies of Nonlinear MHD in Stellarator
 - Free-Boundary Simulations of MHD Plasma Instabilities in Tokamaks
 - Non-Linear Magnetohydrodynamic Simulations of Edge Localised Modes
 
-### 3. Solve GS Equation
+## 3. Solve GS Equation
 This section comprises key references on solving the Grad-Shafranov (GS) equation, a fundamental equation in plasma physics. The documents cover a variety of solution techniques, including spectral elements, finite difference methods, and conformal mapping.
 
 - A Fast, High-Order Solver for GS Equation
@@ -38,7 +38,9 @@ This section comprises key references on solving the Grad-Shafranov (GS) equatio
 - Solving the Grad-Shafranov Equation Using Spectral Elements for Tokamak Equilibrium with Toroidal Rotation
 - Stephen Jardin - Computational Methods in Plasma Physics (Chapman & Hall CRC Computational Science). CRC Press (2010)
 
-### Construction of Model PINN
+# Thesis
+
+## Construction of Model PINN
 
 This section provides code and methods to solve a 1-dimensional differential equation with perturbation elements and Dirichlet boundary conditions using Physics-Informed Neural Networks (PINN). The equation solved is:
 
@@ -53,7 +55,7 @@ Two scripts are provided:
 
 - **`search_activation_function.py`**: Evaluates the performance of different activation functions in solving the differential equation and helps determine the best activation function for this specific problem.
 
-### Solov'ev Equilibrium
+## Solov'ev Equilibrium
 
 The `PINN_Solver_GSeq_parametric_boundary.ipynb` notebook implements a Physics-Informed Neural Network (PINN) to approximate the solution of the Solov'ev equilibrium equation:
 
@@ -74,7 +76,7 @@ Key components of the notebook include:
 
 This implementation demonstrates the capability of the PINN to effectively approximate the Solov'ev equilibrium equation in a controlled magnetic confinement setting.
 
-### Eigenvalue Problem in Ordinary Differential Equations
+## Eigenvalue Problem in Ordinary Differential Equations
 
 The notebooks `evp_standard_neg.ipynb` and `evp_standard_rayleigh_quotient.ipynb` are implementations related to solving eigenvalue problems in ordinary differential equations.
 
@@ -84,7 +86,7 @@ The notebooks `evp_standard_neg.ipynb` and `evp_standard_rayleigh_quotient.ipynb
 
 Both notebooks illustrate the effectiveness of these methods in converging to the smallest eigenvalue and its corresponding eigenfunction, even when starting from different initial guesses for \(\lambda_0\).
 
-### Linear Eigenvalue Problem of the Grad-Shafranov Equation
+## Linear Eigenvalue Problem of the Grad-Shafranov Equation
 
 The notebooks provided tackle the linear eigenvalue problem associated with the Grad-Shafranov equation, aiming to find pairs of eigenvalues and eigenfunctions with the minimum norm using an iterative method combined with PINN. Specifically:
 
